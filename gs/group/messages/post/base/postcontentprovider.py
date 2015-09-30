@@ -26,7 +26,7 @@ from zope.app.pagetemplate import ViewPageTemplateFile
 from gs.group.base.contentprovider import GroupContentProvider
 from gs.group.messages.base import get_icon
 # from .canhide import can_hide_post  # FIXME
-from .postbody import get_post_intro_and_remainder
+from gs.group.messages.post.text.postbody import get_post_intro_and_remainder
 # from .hiddendetails import HiddenPostInfo
 from . import GSMessageFactory as _
 UTF8 = 'utf-8'

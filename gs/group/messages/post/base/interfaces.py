@@ -15,26 +15,6 @@
 from __future__ import absolute_import, unicode_literals
 from zope.interface import Interface
 from zope.schema import TextLine, ASCIILine, Field, Int, Bool
-from gs.core import to_ascii
-
-
-class INavLinksContentProvider(Interface):
-    topicTitle = TextLine(
-        title="Title of the Topic",
-        description='The title of the topic.',
-        required=True)
-
-    relatedPosts = Field(
-        title='Related Posts',
-        description='The posts in the same topic.',
-        required=True)
-
-    pageTemplateFileName = ASCIILine(
-        title="Page Template File Name",
-        description="""The name of the ZPT file
-        that is used to render the post.""",
-        required=False,
-        default=to_ascii('browser/templates/navlinks.pt'))
 
 
 class IGSPostContentProvider(Interface):
@@ -55,11 +35,13 @@ class IGSPostContentProvider(Interface):
         colour of the post.""",
         required=False,
         min=1, default=1)
+
     topicName = TextLine(
         title="Title of the Topic",
         description="""The title of the topic.""",
         required=True,
         default='')
+
     # Should really be called "same author" or similar.
     showPhoto = Bool(
         title='Whether to show the photo',
@@ -85,14 +67,4 @@ class IGSPostContentProvider(Interface):
         description='The name of the ZPT file that is used to render '
                     'the post.',
         required=False,
-        default=to_ascii("browser/templates/postcontentprovider.pt"))
-
-# Used for some utilities
-
-
-class IMarkupEmail(Interface):
-    pass
-
-
-class IWrapEmail(Interface):
-    pass
+        default=b"browser/templates/postcontentprovider.pt")

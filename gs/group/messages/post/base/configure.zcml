@@ -30,11 +30,6 @@
     provides="zope.contentprovider.interfaces.IContentProvider"
     name="groupserver.Post"/>
 
-  <utility component=".postbody.markup_email"
-           provides=".interfaces.IMarkupEmail" />
-  <utility component=".postbody.wrap_message"
-           provides=".interfaces.IWrapEmail" />
-
   <browser:resource
     name="gs-group-messages-post-share-20140327.js"
     file="browser/javascript/post-share.js"
