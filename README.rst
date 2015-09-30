@@ -20,19 +20,7 @@ Introduction
 ============
 
 This is the code for displaying posts that have been made to a group. It
-provides:
-
-``post``:
-  The post traversal in the Messages context.
-
-``gspost``:
-  The actual *Post* page in the Messages context.
-
-``groupserver.Post``:
-  The content provider used to render a post.
-
-``hide_post.ajax``:
-  The AJAX-page that is used to hide a post.
+provides the ``groupserver.Post``content provider used to render a post.
 
 Resources
 =========
