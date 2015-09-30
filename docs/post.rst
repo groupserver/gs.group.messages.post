@@ -1,3 +1,5 @@
+.. _post:
+
 The post content provider
 =========================
 
