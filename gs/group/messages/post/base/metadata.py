@@ -32,13 +32,14 @@ from . import GSMessageFactory as _
 UTF8 = 'utf-8'
 
 
-class GSPostContentProvider(GroupContentProvider):
+class PostMetadataContentProvider(GroupContentProvider):
     post = None
     __thread_lock = RLock()
     cookedTemplates = {}
 
     def __init__(self, context, request, view):
-        super(GSPostContentProvider, self).__init__(context, request, view)
+        print(context)
+        super(PostMetadataContentProvider, self).__init__(context, request, view)
         self.__updated = False
         # allow baseclass override
         # FIXME

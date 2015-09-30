@@ -25,10 +25,27 @@
     <implements interface=".interfaces.IGSPostContentProvider"/>
   </class>
   <adapter
-    for="zope.interface.Interface zope.publisher.interfaces.browser.IDefaultBrowserLayer zope.interface.Interface"
+    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         zope.interface.Interface"
     factory=".postcontentprovider.GSPostContentProvider"
     provides="zope.contentprovider.interfaces.IContentProvider"
     name="groupserver.Post"/>
+
+  <!-- Post metadata Content Provider -->
+  <interface
+    interface=".interfaces.IPostMetadataContentProvider"
+    type="zope.contentprovider.interfaces.ITALNamespaceData"/>
+  <class class=".metadata.PostMetadataContentProvider">
+    <implements interface=".interfaces.IPostMetadataContentProvider"/>
+  </class>
+  <adapter
+    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder
+         zope.publisher.interfaces.browser.IDefaultBrowserLayer
+         zope.interface.Interface"
+    factory=".metadata.PostMetadataContentProvider"
+    provides="zope.contentprovider.interfaces.IContentProvider"
+    name="groupserver.PostMetadata"/>
 
   <browser:resource
     name="gs-group-messages-post-share-20140327.js"

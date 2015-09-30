@@ -69,3 +69,14 @@ class IGSPostContentProvider(Interface):
                     'the post.',
         required=False,
         default=b"browser/templates/postcontentprovider.pt")
+
+
+class IPostMetadataContentProvider(IGSPostContentProvider):
+    '''The content provider for the post metadata'''
+
+    pageTemplateFileName = ASCIILine(
+        title="Page Template File Name",
+        description='The name of the ZPT file that is used to render '
+                    'the post.',
+        required=False,
+        default=b"browser/templates/metadata.pt")
