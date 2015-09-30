@@ -25,6 +25,8 @@ provides the ``groupserver.Post``content provider used to render a post.
 Resources
 =========
 
+- Documentation:
+  http://groupserver.readthedocs.org/projects/gsgroupmessagespostbase/
 - Code repository:
   https://github.com/groupserver/gs.group.messages.post.base/
 - Translations:

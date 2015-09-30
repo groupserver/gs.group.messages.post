@@ -43,6 +43,8 @@ Indices and tables
 Resources
 =========
 
+- Documentation:
+  http://groupserver.readthedocs.org/projects/gsgroupmessagespostbase/
 - Code repository:
   https://github.com/groupserver/gs.group.messages.post.base/
 - Translations:
