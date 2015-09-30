@@ -25,9 +25,9 @@ from zope.contentprovider.interfaces import UpdateNotCalled
 from zope.app.pagetemplate import ViewPageTemplateFile
 from gs.group.base.contentprovider import GroupContentProvider
 from gs.group.messages.base import get_icon
-# from .canhide import can_hide_post  # FIXME
-from gs.group.messages.post.text.postbody import get_post_intro_and_remainder
-# from .hiddendetails import HiddenPostInfo
+from gs.group.messages.post.hide.canhide import can_hide_post  # FIXME
+from gs.group.messages.post.hide.hiddendetails import HiddenPostInfo  # FIXME
+from gs.group.messages.post.text.postbody import get_post_intro_and_remainder  # FIXME
 from . import GSMessageFactory as _
 UTF8 = 'utf-8'
 
@@ -41,7 +41,8 @@ class GSPostContentProvider(GroupContentProvider):
         super(GSPostContentProvider, self).__init__(context, request, view)
         self.__updated = False
         # allow baseclass override
-        # self.can_hide_post = can_hide_post  # FIXME
+        # FIXME
+        self.can_hide_post = can_hide_post
 
     def update(self):
         """Update the internal state of the post content-provider.
@@ -80,9 +81,9 @@ class GSPostContentProvider(GroupContentProvider):
 
         self.hiddenPostDetails = None
         if self.post['hidden']:
-            pass  # FIXME
-            #self.hiddenPostInfo = HiddenPostInfo(self.context,
-            #                                     self.post['post_id'])
+            # FIXME
+            self.hiddenPostInfo = HiddenPostInfo(self.context,
+                                                 self.post['post_id'])
 
         self.mediaFiles = []
         self.normalFiles = []

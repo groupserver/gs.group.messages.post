@@ -28,6 +28,7 @@ class IGSPostContentProvider(Interface):
         description="The email instance to display",
         required=True,
         readonly=False)
+
     position = Int(
         title="Position of the Post",
         description="""The position of the post in the topic.
