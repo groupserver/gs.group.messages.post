@@ -1,6 +1,24 @@
 Changelog
 =========
 
+4.0.0 (2015-10-dd)
+------------------
+
+* Adding documentation
+* Renaming the product `gs.group.messages.post.base`_
+* Splitting `gs.group.messages.post.hide`_,
+  `gs.group.messages.post.page`_, and
+  `gs.group.messages.post.text`_ off this product
+
+.. _gs.group.messages.post.base:
+   https://github.com/groupserver/gs.group.messages.post.base/
+.. _gs.group.messages.post.hide:
+   https://github.com/groupserver/gs.group.messages.post.hide/
+.. _gs.group.messages.post.page:
+   https://github.com/groupserver/gs.group.messages.post.page/
+.. _gs.group.messages.post.text:
+   https://github.com/groupserver/gs.group.messages.post.text/
+
 3.5.0 (2015-09-21)
 ------------------
 
@@ -12,7 +30,7 @@ Changelog
 3.4.3 (2015-07-24)
 ------------------
 
-* Hitting code with the PEP-8 stick 
+* Hitting code with the PEP-8 stick
 
 3.4.2 (2015-04-16)
 ------------------
@@ -26,19 +44,18 @@ Changelog
 * [FR] Adding a French translation, thanks to `Razique Mahroua`_
 
 .. _Razique Mahroua:
-   https://www.transifex.com/accounts/profile/Razique/
+   https://www.transifex.com/user/profile/Razique/
 
 3.4.0 (2015-02-27)
 ------------------
 
 * Naming the reStructuredText files as such
-* Switching to GitHub_ as the canonical repository
+* Switching to GitHub as the canonical repository
 * Adding internationalisation support
 * Adding support for Transifex_
 
-.. _GitHub: https:/github.com/groupserver/gs.group.messages.post/
 .. _Transifex:
-   https://www.transifex.com/projects/p/gs-group-messages-post/
+   https://www.transifex.com/groupserver/gs-group-messages-post/
 
 3.3.0 (2014-06-11)
 ------------------
