@@ -9,9 +9,15 @@ analyse a post.
 * Each post is an ``<article>`` element [#article]_, and it
   conforms to the ``h-entry`` microformat [#h-entry]_
 
-* The topic-title is marked with the ``entry-title`` class, and
-  given a ``heading`` role [#heading]_. Note that it may be
+* The topic-title is marked with the ``p-name`` class, and given
+  a ``heading`` role [#heading]_. Note that the heading may be
   hidden by the CSS for the page.
+
+  + The ``<article>`` and heading are linked by the
+    ``aria-labelledby`` attribute on the ``<article>``.
+
+  + The ``u-url`` (also on the heading) marks the URL of the
+    *permalink* for the post.
 
 * The author metadata is given the ``h-card`` and ``p-author``
   classes, with the name marked with the ``p-name`` class [#h-card]_.
