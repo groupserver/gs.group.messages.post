@@ -57,10 +57,13 @@ XML
 ---
 
 The XML that uses the content provider is in two parts. First,
-the parameters are set up by the TAL of the calling code, using
-the ``tal:define`` attribute. Second the content provider is
-called using the ``provider`` call. For example, the code used by
-the *Topic* page looks similar to the following.
+the parameters — as defined by :class:`IPost` — are set up by the
+TAL of the calling code, using the ``tal:define``
+attribute. Second the content provider is called using the
+``provider`` call.
+
+For example, the code used by the *Topic* page looks similar to
+the following.
 
 .. code-block:: xml
    :linenos:
@@ -90,6 +93,13 @@ accordingly (line 6). The :attr:`IPost.showPhoto` is calculated
 default (``False``). Finally, the content provider is called
 using ``structure provider:groupserver.Post``, replacing the
 content of the ``<tal:block>`` element (line 11).
+
+Caching
+-------
+
+Because speed is so important, the post is *partly* cached: the
+page-template is parsed and loaded (*cooked*), and stored in a
+per-thread cache.
 
 .. _content provider:
    https://pypi.python.org/pypi/zope.contentprovider
