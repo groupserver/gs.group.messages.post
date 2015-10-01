@@ -17,7 +17,7 @@
   <i18n:registerTranslations directory="locales" />
   <include package="zope.viewlet" file="meta.zcml" />
 
-  <!-- Post Content Provider -->
+  <!-- Post content provider -->
   <interface
     interface=".interfaces.IGSPostContentProvider"
     type="zope.contentprovider.interfaces.ITALNamespaceData"/>
@@ -25,14 +25,14 @@
     <implements interface=".interfaces.IGSPostContentProvider"/>
   </class>
   <adapter
+    name="groupserver.Post"
     for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder
          zope.publisher.interfaces.browser.IDefaultBrowserLayer
          zope.interface.Interface"
     factory=".postcontentprovider.GSPostContentProvider"
-    provides="zope.contentprovider.interfaces.IContentProvider"
-    name="groupserver.Post"/>
+    provides="zope.contentprovider.interfaces.IContentProvider" />
 
-  <!-- Post metadata Content Provider -->
+  <!-- Post metadata content provider -->
   <interface
     interface=".interfaces.IPostMetadataContentProvider"
     type="zope.contentprovider.interfaces.ITALNamespaceData"/>
@@ -40,12 +40,20 @@
     <implements interface=".interfaces.IPostMetadataContentProvider"/>
   </class>
   <adapter
+    name="groupserver.PostMetadata"
     for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder
          zope.publisher.interfaces.browser.IDefaultBrowserLayer
          zope.interface.Interface"
     factory=".metadata.PostMetadataContentProvider"
-    provides="zope.contentprovider.interfaces.IContentProvider"
-    name="groupserver.PostMetadata"/>
+    provides="zope.contentprovider.interfaces.IContentProvider" />
+
+  <!--Post body viewlet manage (which is also a content provider)-->
+  <browser:viewletManager
+    name="groupserver.PostBody"
+    provides=".interfaces.IPostBody"
+    class="gs.viewlet.manager.WeightOrderedViewletManager"
+    template="browser/templates/body.pt"
+    permission="zope2.Public" />
 
   <browser:resource
     name="gs-group-messages-post-share-20140327.js"

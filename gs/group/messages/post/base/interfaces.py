@@ -15,6 +15,7 @@
 from __future__ import absolute_import, unicode_literals
 from zope.interface import Interface
 from zope.schema import TextLine, ASCIILine, Field, Int, Bool
+from zope.viewlet.interfaces import IViewletManager
 
 
 class IGSPostContentProvider(Interface):
@@ -80,3 +81,7 @@ class IPostMetadataContentProvider(IGSPostContentProvider):
                     'the post.',
         required=False,
         default=b"browser/templates/metadata.pt")
+
+
+class IPostBody(IViewletManager):
+    '''The viewlet manager for the post-body'''

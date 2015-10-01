@@ -22,31 +22,33 @@ displayed using two *viewlet managers*.
 
 .. code-block:: none
 
-    ┌─Post────────────────────────────────────────────────┐
-    │                                                     │
-    │ ┌─Metadata────────────────────────────────────────┐ │
-    │ │ Information about the person who made           │ │
-    │ │ the post                                        │ │
-    │ └─────────────────────────────────────────────────┘ │
-    │                                                     │
-    │ ┌─Actions viewlet manager─────────────────────────┐ │
-    │ │ gs.group.messages.post.base.interfaces.IActions │ │
-    │ └─────────────────────────────────────────────────┘ │
-    │                                                     │
-    │ ┌─Post viewlet manager────────────────────────────┐ │
-    │ │ gs.group.messages.post.base.interfaces.IPost    │ │
-    │ └─────────────────────────────────────────────────┘ │
-    │                                                     │
-    └─────────────────────────────────────────────────────┘
+    ┌─Post─────────────────────────────────────────────────┐
+    │                                                      │
+    │ ┌─Metadata─────────────────────────────────────────┐ │
+    │ │ Information about the person who made the post   │ │
+    │ └──────────────────────────────────────────────────┘ │
+    │                                                      │
+    │ ┌─Actions viewlet manager──────────────────────────┐ │
+    │ │ gs.group.messages.post.base.interfaces.IActions  │ │
+    │ └──────────────────────────────────────────────────┘ │
+    │                                                      │
+    │ ┌─Post body viewlet manager────────────────────────┐ │
+    │ │ gs.group.messages.post.base.interfaces.IPostBody │ │
+    │ └──────────────────────────────────────────────────┘ │
+    │                                                      │
+    └──────────────────────────────────────────────────────┘
 
+Metadata:
+  The metadata for the post is provided by the content provider.
 
 Actions:
   The actions viewlet manager shows the actions the viewer can
   carry out.
 
-Post:
+Post body:
   The post itself is provided by a viewlet that slots into the
-  post viewlet manager.
+  post viewlet manager. Views of the post provide state that they
+  are ``for`` the :class:`.interfaces.IPostBody` viewlet manager.
 
 As a consequence of this design, the actual body of the post is
 provided by other products. Hidden posts are handled by the

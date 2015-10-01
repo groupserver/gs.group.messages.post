@@ -14,4 +14,8 @@
        role="toolbar" aria-label="Post Actions"
        tal:condition="not:view/post/hidden">
   </div><!--gs-group-messages-post-buttons-->
+  <tal:block
+    replace="structure provider:groupserver.PostBody">
+    The post body goes here
+  </tal:block>
 </article><!--h-entry-->
