@@ -108,6 +108,7 @@ Viewlets that wish to provide actions for the post should state that their
      weight="90"
      title="Hide" />'''
 
+
 class IBody(IViewletManager):
     '''The viewlet manager for the post body.
 
