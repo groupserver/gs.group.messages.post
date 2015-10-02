@@ -79,7 +79,8 @@
     permission="zope2.Public"/>
 
   <!--Help-->
-  <browser:viewlet name="gs-group-messages-topic-post"
+  <browser:viewlet
+    name="gs-group-messages-post-base"
     manager="gs.help.interfaces.IUserHelp"
     template="browser/templates/help.pt"
     permission="zope.Public"
