@@ -10,7 +10,7 @@ is just good user-interface design. It is actually quite
 complex. In this document I will discuss the structure of the
 viewlets that are used to create the post.
 
-The post itself provides two interfaces. 
+The post itself provides two interfaces.
 
 * To *external* code it looks like a `content provider`_ that
   provides the interface
@@ -88,14 +88,66 @@ Three interfaces are used within the post:
 :class:`.interfaces.IActions` for the actions, and
 :class:`.interfaces.IBody` for the actual body.
 
-.. autoclass:: gs.group.messages.post.base.interfaces.IPost
-   :members:
+.. class:: gs.group.messages.post.base.interfaces.IPost
 
-.. autoclass:: gs.group.messages.post.base.interfaces.IActions
-   :members:
+    The viewlet manager for the post.
 
-.. autoclass:: gs.group.messages.post.base.interfaces.IBody
-   :members:
+    Viewlets that wish to provide content for the post should
+    state that their **manager** is this interface:
+
+
+    .. code-block:: xml
+       :linenos:
+       :emphasize-lines: 3
+
+       <browser:viewlet
+         name="gs-group-messages-post-base-metadata"
+         manager="gs.group.messages.post.base.interfaces.IPost"
+         class=".metadata.PostMetadataViewlet"
+         template="browser/templates/metadata.pt"
+         permission="zope2.View"
+         weight="10"
+         title="Metadata" />
+
+.. class:: gs.group.messages.post.base.interfaces.IActions
+
+    The viewlet manager for the post actions.
+
+    Viewlets that wish to provide actions for the post should
+    state that their **manager** is this interface:
+
+    .. code-block:: xml
+       :linenos:
+       :emphasize-lines: 3
+
+       <browser:viewlet
+         name="gs-group-messages-post-hide-button"
+         manager="gs.group.messages.post.base.interfaces.IActions"
+         class=".button.HideButton"
+         template="browser/templates/button.pt"
+         permission="zope2.View"
+         weight="90"
+         title="Hide" />
+
+.. class:: gs.group.messages.post.base.interfaces.IBody
+
+    The viewlet manager for the post body.
+
+    Viewlets that wish to provide views for the post body should
+    state that their **manager** is this interface:
+
+    .. code-block:: xml
+       :linenos:
+       :emphasize-lines: 3
+
+       <browser:viewlet
+         name="gs-group-messages-post-text"
+         manager="gs.group.messages.post.base.interfaces.IBody"
+         class=".body.PlainTextBody"
+         template="browser/templates/body.pt"
+         permission="zope2.View"
+         weight="10"
+         title="Text" />
 
 .. _content provider:
    https://pypi.python.org/pypi/zope.contentprovider
