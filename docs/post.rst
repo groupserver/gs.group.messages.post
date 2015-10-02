@@ -12,9 +12,9 @@ Interface
 ---------
 
 The post `content provider`_ implements the interface
-:class:`IPost`.
+:class:`IPostContentProvider`.
 
-.. class:: IPost
+.. class:: IPostContentProvider
 
    .. attribute:: post
 
@@ -68,7 +68,7 @@ the following.
 .. code-block:: xml
    :linenos:
    :emphasize-lines: 2,3,6,10,11
-
+ 
    <tal:block
      define="topicName view/topicName;
              isPublic view/isPublic;">

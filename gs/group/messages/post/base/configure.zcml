@@ -64,7 +64,7 @@
   <!--browser:viewletManager
     name="groupserver.PostBody"
     for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder"
-    provides=".interfaces.IPostBody"
+    provides=".interfaces.IBody"
     class=".body.PostBodyViewletManager"
     template="browser/templates/simplemanager.pt"
     permission="zope2.Public" /-->

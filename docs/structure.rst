@@ -1,4 +1,4 @@
-.. _structure: 
+.. _structure:
 
 The structure of a post
 =======================
@@ -22,33 +22,52 @@ displayed using two *viewlet managers*.
 
 .. code-block:: none
 
-    ┌─Post─────────────────────────────────────────────────┐
-    │                                                      │
-    │ ┌─Metadata─────────────────────────────────────────┐ │
-    │ │ Information about the person who made the post   │ │
-    │ └──────────────────────────────────────────────────┘ │
-    │                                                      │
-    │ ┌─Actions viewlet manager──────────────────────────┐ │
-    │ │ gs.group.messages.post.base.interfaces.IActions  │ │
-    │ └──────────────────────────────────────────────────┘ │
-    │                                                      │
-    │ ┌─Post body viewlet manager────────────────────────┐ │
-    │ │ gs.group.messages.post.base.interfaces.IPostBody │ │
-    │ └──────────────────────────────────────────────────┘ │
-    │                                                      │
-    └──────────────────────────────────────────────────────┘
+    ┌─Post viewlet manager─────────────────────────────────────┐
+    │ gs.group.messages.post.base.interfaces.IPost             │
+    │                                                          │
+    │ ┌─Metadata viewlet─────────────────────────────────────┐ │
+    │ │ gs-group-messages-post-base-metadata                 │ │
+    │ └──────────────────────────────────────────────────────┘ │
+    │                                                          │
+    │ ┌─Actions viewlet──────────────────────────────────────┐ │
+    │ │ gs-group-messages-post-base-actions                  │ │
+    │ │                                                      │ │
+    │ │ ┌─Actions viewlet manager──────────────────────────┐ │ │
+    │ │ │ gs.group.messages.post.base.interfaces.IActions  │ │ │
+    │ │ └──────────────────────────────────────────────────┘ │ │
+    │ │                                                      │ │
+    │ └──────────────────────────────────────────────────────┘ │
+    │                                                          │
+    │ ┌─Body viewlet─────────────────────────────────────────┐ │
+    │ │ gs-group-messages-post-base-body                     │ │
+    │ │                                                      │ │
+    │ │ ┌─Post body viewlet manager────────────────────────┐ │ │
+    │ │ │ gs.group.messages.post.base.interfaces.IBody     │ │ │
+    │ │ └──────────────────────────────────────────────────┘ │ │
+    │ │                                                      │ │
+    │ └──────────────────────────────────────────────────────┘ │
+    │                                                          │
+    └──────────────────────────────────────────────────────────┘
+
+Post:
+  The overall container that holds the post is a *viewlet
+  manager*, which provides the :class:`.interfaces.IPost`
+  interface.
 
 Metadata:
-  The metadata for the post is provided by the content provider.
+  The metadata for the post is provided by a *viewlet* defined by
+  this product.
 
 Actions:
-  The actions viewlet manager shows the actions the viewer can
-  carry out.
+  The controls the viewer can see (and thereby use) are shown by
+  the Actions. It is split in two: a *viewlet* for the post,
+  which then contains a *viewlet manger* for the content, which
+  provides the class :class:`.interfaces.IActions`.
 
 Post body:
-  The post itself is provided by a viewlet that slots into the
-  post viewlet manager. Views of the post provide state that they
-  are ``for`` the :class:`.interfaces.IPostBody` viewlet manager.
+  The body is provided by a viewlet that slots into the post
+  viewlet manager. Views of the post provide state that they are
+  ``for`` the :class:`.interfaces.IBody` viewlet manager.
 
 As a consequence of this design, the actual body of the post is
 provided by other products. Hidden posts are handled by the
@@ -56,6 +75,18 @@ provided by other products. Hidden posts are handled by the
 the *Hide* button appears in the actions; plain-text posts
 (:mimetype:`text/plain`) are rendered by the
 `gs.group.messages.post.text`_ product.
+
+Interfaces
+----------
+
+.. autoclass:: gs.group.messages.post.base.interfaces.IPost
+   :members:
+
+.. autoclass:: gs.group.messages.post.base.interfaces.IActions
+   :members:
+
+.. autoclass:: gs.group.messages.post.base.interfaces.IBody
+   :members:
 
 .. _content provider:
    https://pypi.python.org/pypi/zope.contentprovider

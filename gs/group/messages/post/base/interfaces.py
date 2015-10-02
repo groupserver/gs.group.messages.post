@@ -70,8 +70,59 @@ class IPostMetadataContentProvider(IGSPostContentProvider):
 
 
 class IPost(IViewletManager):
-    '''The viewlet manager for the post'''
+    '''The viewlet manager for the post.
+
+Viewlets that wish to provide content for the post should state that their
+**manager** is this interface:
+
+.. code-block:: xml
+   :linenos:
+   :emphasize-lines: 3
+
+   <browser:viewlet
+     name="gs-group-messages-post-base-metadata"
+     manager="gs.group.messages.post.base.interfaces.IPost"
+     class=".metadata.PostMetadataViewlet"
+     template="browser/templates/metadata.pt"
+     permission="zope2.View"
+     weight="10"
+     title="Metadata" />'''
 
 
-class IPostBody(IViewletManager):
-    '''The viewlet manager for the post-body'''
+class IActions(IViewletManager):
+    '''The viewlet manager for the post actions.
+
+Viewlets that wish to provide actions for the post should state that their
+**manager** is this interface:
+
+.. code-block:: xml
+   :linenos:
+   :emphasize-lines: 3
+
+   <browser:viewlet
+     name="gs-group-messages-post-hide-button"
+     manager="gs.group.messages.post.base.interfaces.IActions"
+     class=".button.HideButton"
+     template="browser/templates/button.pt"
+     permission="zope2.View"
+     weight="90"
+     title="Hide" />'''
+
+class IBody(IViewletManager):
+    '''The viewlet manager for the post body.
+
+Viewlets that wish to provide views for the post body should state that
+their **manager** is this interface:
+
+.. code-block:: xml
+   :linenos:
+   :emphasize-lines: 3
+
+   <browser:viewlet
+     name="gs-group-messages-post-text"
+     manager="gs.group.messages.post.base.interfaces.IBody"
+     class=".body.PlainTextBody"
+     template="browser/templates/body.pt"
+     permission="zope2.View"
+     weight="10"
+     title="Text" />'''
