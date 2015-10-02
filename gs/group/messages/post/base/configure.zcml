@@ -22,15 +22,15 @@
   <interface
     interface=".interfaces.IGSPostContentProvider"
     type="zope.contentprovider.interfaces.ITALNamespaceData"/>
-  <class class=".postcontentprovider.GSPostContentProvider">
+  <class class=".post.PostViewletManager">
     <implements interface=".interfaces.IGSPostContentProvider"/>
   </class>
   <browser:viewletManager
     name="groupserver.Post"
     for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder"
     provides=".interfaces.IPost"
-    class=".postcontentprovider.GSPostContentProvider"
-    template="browser/templates/postcontentprovider.pt"
+    class=".post.PostViewletManager"
+    template="browser/templates/post.pt"
     permission="zope2.Public" />
 
   <!-- Post metadata viewlet -->

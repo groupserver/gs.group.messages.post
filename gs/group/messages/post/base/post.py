@@ -20,7 +20,7 @@ from zope.app.pagetemplate import ViewPageTemplateFile
 from gs.viewlet.manager import WeightOrderedViewletManager
 
 
-class GSPostContentProvider(WeightOrderedViewletManager):
+class PostViewletManager(WeightOrderedViewletManager):
     post = None
     __thread_lock = RLock()
     cookedTemplates = {}
