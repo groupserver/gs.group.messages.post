@@ -14,7 +14,7 @@
 ############################################################################
 from __future__ import absolute_import, unicode_literals
 from zope.interface import Interface
-from zope.schema import TextLine, ASCIILine, Field, Int, Bool
+from zope.schema import TextLine, Field, Int, Bool
 from zope.viewlet.interfaces import IViewletManager
 
 
@@ -64,23 +64,13 @@ class IGSPostContentProvider(Interface):
         required=False,
         default=False)
 
-    pageTemplateFileName = ASCIILine(
-        title="Page Template File Name",
-        description='The name of the ZPT file that is used to render '
-                    'the post.',
-        required=False,
-        default=b"browser/templates/postcontentprovider.pt")
-
 
 class IPostMetadataContentProvider(IGSPostContentProvider):
     '''The content provider for the post metadata'''
 
-    pageTemplateFileName = ASCIILine(
-        title="Page Template File Name",
-        description='The name of the ZPT file that is used to render '
-                    'the post.',
-        required=False,
-        default=b"browser/templates/metadata.pt")
+
+class IPost(IViewletManager):
+    '''The viewlet manager for the post'''
 
 
 class IPostBody(IViewletManager):

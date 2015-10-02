@@ -5,17 +5,21 @@
   tal:attributes="class string:h-entry ${view/cssClass};
                   id string:post-${view/post/post_id};
                   aria-labelledby string:post-${view/post/post_id}-title">
-  <tal:block
+  <!--tal:block
     define="post view/post"
     replace="structure provider:groupserver.PostMetadata">
     The post metadata goes here
-  </tal:block>
-  <div class="gs-group-messages-post-buttons btn-toolbar"
+  </tal:block-->
+  <!--div class="gs-group-messages-post-buttons btn-toolbar"
        role="toolbar" aria-label="Post Actions"
        tal:condition="not:view/post/hidden">
-  </div><!--gs-group-messages-post-buttons-->
-  <tal:block
+  </div--><!--gs-group-messages-post-buttons-->
+  <!--tal:block
     replace="structure provider:groupserver.PostBody">
     The post body goes here
+  </tal:block-->
+
+  <tal:block repeat="viewlet options/viewlets">
+    <tal:block content="structure viewlet/render">Script Content</tal:block>
   </tal:block>
 </article><!--h-entry-->

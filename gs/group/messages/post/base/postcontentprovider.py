@@ -17,42 +17,13 @@ from threading import RLock
 from zope.cachedescriptors.property import Lazy
 from zope.contentprovider.interfaces import UpdateNotCalled
 from zope.app.pagetemplate import ViewPageTemplateFile
-from gs.group.base.contentprovider import GroupContentProvider
+from gs.viewlet.manager import WeightOrderedViewletManager
 
 
-class GSPostContentProvider(GroupContentProvider):
+class GSPostContentProvider(WeightOrderedViewletManager):
     post = None
     __thread_lock = RLock()
     cookedTemplates = {}
-
-    def __init__(self, context, request, view):
-        super(GSPostContentProvider, self).__init__(context, request, view)
-        self.__updated = False
-
-    def update(self):
-        """Update the internal state of the post content-provider.
-
-        This method can be considered the main "setter" for the
-        content provider; for the most part, information about the post's
-        author is set.
-
-        SIDE EFFECTS
-          The following attributes are set.
-            * "self.__updated"     Set to "True".
-            * "self.authorId"      Set to the user-id of the post author.
-            * "self.authorName"    Set to the name of the post author.
-            * "self.authorExists"  Set to "True" if the author exists.
-            * "self.authored"      Set to "True" if the current user
-                                   authored the post.
-            * "self.authorImage"   Set to the URL of the author's image.
-            * "self.siteInfo"     Set to an instance of GSSiteInfo.
-            * "self.groupInfo"    Set to an instance of GSGroupInfo.
-            * "self.post"         Set to the content of the post.
-        """
-        if not(self.post):
-            raise ValueError('The self.post is missing')
-        # See the interface for what is passed in.
-        self.__updated = True
 
     def cook_template(self, fname):
         if fname in self.cookedTemplates:
@@ -68,7 +39,7 @@ class GSPostContentProvider(GroupContentProvider):
 
         return cooked
 
-    def render(self):
+    def notRrender(self):
         if not self.__updated:
             raise UpdateNotCalled
         pageTemplate = self.cook_template(self.pageTemplateFileName)
