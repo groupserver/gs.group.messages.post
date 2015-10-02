@@ -9,6 +9,7 @@ Changelog
 * Splitting `gs.group.messages.post.hide`_,
   `gs.group.messages.post.page`_, and
   `gs.group.messages.post.text`_ off this product
+* Using viewlets to generate the post
 
 .. _gs.group.messages.post.base:
    https://github.com/groupserver/gs.group.messages.post.base/

@@ -3,9 +3,8 @@
 Design requirements
 ===================
 
-#. The rendering of a post needs to be **fast.** The *Topic* page
-   is the workhorse page of GroupServer, and it uses posts very
-   heavily.
+#. The rendering of a post needs to be **fast.** Posts are the
+   core GroupServer, and are used very heavily.
 
 #. The system to display posts needs to be **flexible.** People
    can add posts containing any old thing, such as HTML, and

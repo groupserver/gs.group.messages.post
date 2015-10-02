@@ -5,32 +5,33 @@ The post content provider
 
 .. currentmodule:: gs.group.messages.post.base.interfaces
 
-The post `content provider`_ provides an interface_, which is
-used by the XML_ that generates the page.
+The post `content provider`_ is used to render a single
+message. It provides an interface_, which is used by the XML_
+that generates the page.
 
 Interface
 ---------
 
 The post `content provider`_ implements the interface
-:class:`IPostContentProvider`.
+:class:`IPostContentProvider`. The various attributes are filled
+by the XML_ provided by the calling code.
 
 .. class:: IPostContentProvider
 
    .. attribute:: post
 
-      The email message instance that is being displayed.
+      *(Required)* The email message instance that is being displayed.
 
    .. attribute:: position
 
       The position of the post in the list of posts, as an
-      integer (``int``) above ``0`` (a cardinal value). The
-      position may be the position in the topic, or in the list
-      of posts. Defaults to ``1``.
+      integer (``int``) above ``0`` (a *cardinal*
+      value). Defaults to ``1``.
 
    .. attribute:: topicName
 
-      The name of the topic that the post appears in, as a
-      Unicode sequence (``str`` in Python 3, ``unicode`` in
+      *(Required)* The name of the topic that the post appears in,
+      as a Unicode sequence (``str`` in Python 3, ``unicode`` in
       Python 2). While the post could figure this out, it is
       faster to have this information provided (see
       :ref:`requirements`).
@@ -44,9 +45,10 @@ The post `content provider`_ implements the interface
 
    .. attribute:: isPublic
 
-      Whether the post is public, as a Boolean (``bool``). While
-      the post could figure this out, it is faster to have this
-      information provided (see :ref:`requirements`).
+      *(Required)* Whether the post is public, as a Boolean
+      (``bool``, with no default). While the post could figure
+      this out, it is faster to have this information provided
+      (see :ref:`requirements`).
 
    .. attribute:: showRemainder
 
@@ -60,7 +62,7 @@ The XML that uses the content provider is in two parts. First,
 the parameters — as defined by :class:`IPost` — are set up by the
 TAL of the calling code, using the ``tal:define``
 attribute. Second the content provider is called using the
-``provider`` call.
+``provider:`` expression.
 
 For example, the code used by the *Topic* page looks similar to
 the following.

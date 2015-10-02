@@ -10,15 +10,17 @@ is just good user-interface design. It is actually quite
 complex. In this document I will discuss the structure of the
 viewlets that are used to create the post.
 
-The post itself is a `content provider`_, which provides the
-interface :class:`.interfaces.IPost`. It is a provider so it can
-be called from many different contexts.
+The post itself provides two interfaces. 
 
-The content provider generates the **metadata** for the post,
-including the profile photo of the author, their name, and the
-date the post was made. (This metadata conforms to some
-:ref:`microformats <microformats>`) The rest of the post is
-displayed using two *viewlet managers*.
+* To *external* code it looks like a `content provider`_ that
+  provides the interface
+  :class:`.interfaces.IPostContentProvider` interface.
+* To the *internal* code that provide the content of the post it
+  is a *viewlet manager* that provides the
+  :class:`.interfaces.IPost` interface.
+
+Three viewlets provided by this product use the post viewlet
+manager, two of which contain viewlet managers themselves.
 
 .. code-block:: none
 
@@ -56,7 +58,9 @@ Post:
 
 Metadata:
   The metadata for the post is provided by a *viewlet* defined by
-  this product.
+  this product The metadata includes the profile photo of the
+  author, their name, and the date the post was made. (This
+  metadata conforms to some :ref:`microformats. <microformats>`)
 
 Actions:
   The controls the viewer can see (and thereby use) are shown by
@@ -67,7 +71,7 @@ Actions:
 Post body:
   The body is provided by a viewlet that slots into the post
   viewlet manager. Views of the post provide state that they are
-  ``for`` the :class:`.interfaces.IBody` viewlet manager.
+  managed by the :class:`.interfaces.IBody` viewlet manager.
 
 As a consequence of this design, the actual body of the post is
 provided by other products. Hidden posts are handled by the
@@ -78,6 +82,11 @@ the *Hide* button appears in the actions; plain-text posts
 
 Interfaces
 ----------
+
+Three interfaces are used within the post:
+:class:`.interfaces.IPost` for the overall layout,
+:class:`.interfaces.IActions` for the actions, and
+:class:`.interfaces.IBody` for the actual body.
 
 .. autoclass:: gs.group.messages.post.base.interfaces.IPost
    :members:
