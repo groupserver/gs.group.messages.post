@@ -1,3 +1,5 @@
-<div class="email-message">
-  <pre>This is the body of the post</pre>
+<div xmlns:tal="http://xml.zope.org/namespaces/tal"
+     class="email-message"
+     tal:content="structure provider:groupserver.PostBody">
+  This is the body of the post
 </div>
