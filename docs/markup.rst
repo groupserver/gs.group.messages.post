@@ -7,7 +7,10 @@ A post uses the following microformats, which can be used to
 analyse a post.
 
 * Each post is an ``<article>`` element [#article]_, and it
-  conforms to the ``h-entry`` microformat [#h-entry]_
+  conforms to the ``h-entry`` microformat [#h-entry]_.
+
+* The metadata for the post is contained within an ``<aside>``
+  element [#aside]_.
 
 * The topic-title is marked with the ``p-name`` class, and given
   a ``heading`` role [#heading]_. Note that the heading may be
@@ -33,6 +36,9 @@ analyse a post.
 
 .. [#h-entry] See the Microformats wiki for more on ``h-entry``
               <http://microformats.org/wiki/h-entry>
+
+.. [#aside] For more on the ``<aside>`` element see
+   <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside>
 
 .. [#heading] For more on the ``heading`` role see
               <http://www.w3.org/TR/wai-aria/roles#heading>
