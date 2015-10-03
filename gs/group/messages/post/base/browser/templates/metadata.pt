@@ -2,7 +2,7 @@
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
   i18n:domain="gs.group.messages.post">
-  <div class="email-metadata" role="complementary"
+  <aside class="email-metadata" role="complementary"
        tal:define="m python:modules['Products.XWFCore.XWFUtils'];
                    munge_date python:m.munge_date;
                    change_tz python:m.change_timezone;">
@@ -28,7 +28,7 @@
         <time tal:attributes="datetime d/isoformat" class="dt-published"
               tal:content="date">Today, Tomorrow, Timaru</time></em>
     </span><!--posted-->
-  </div><!--email-metadata-->
+  </aside><!--email-metadata-->
   <div tal:condition="view/showPhoto" role="complementary"
        tal:define="user view/authorInfo/user; size string:50;"
        tal:replace="structure provider:groupserver.SquareUserImage"/>
