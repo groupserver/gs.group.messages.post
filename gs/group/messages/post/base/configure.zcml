@@ -61,13 +61,13 @@
   <class class=".body.PostBodyViewletManager">
     <implements interface=".interfaces.IGSPostContentProvider"/>
   </class>
-  <!--browser:viewletManager
+  <browser:viewletManager
     name="groupserver.PostBody"
     for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder"
     provides=".interfaces.IBody"
     class=".body.PostBodyViewletManager"
     template="browser/templates/simplemanager.pt"
-    permission="zope2.Public" /-->
+    permission="zope2.Public" />
 
   <browser:resource
     name="gs-group-messages-post-share-20140327.js"
