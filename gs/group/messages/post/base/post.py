@@ -21,7 +21,6 @@ from gs.viewlet.manager import WeightOrderedViewletManager
 
 
 class PostViewletManager(WeightOrderedViewletManager):
-    post = None
     __thread_lock = RLock()
     cookedTemplates = {}
 
@@ -39,7 +38,7 @@ class PostViewletManager(WeightOrderedViewletManager):
 
         return cooked
 
-    def notRrender(self):
+    def notRender(self):
         if not self.__updated:
             raise UpdateNotCalled
         pageTemplate = self.cook_template(self.pageTemplateFileName)
