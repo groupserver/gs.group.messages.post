@@ -13,6 +13,7 @@
 #
 ############################################################################
 from __future__ import absolute_import, division, unicode_literals, print_function
+from zope.component import createObject
 from gs.group.base import GroupViewlet
 from gs.group.messages.base import get_icon
 
@@ -30,6 +31,14 @@ class PostViewlet(GroupViewlet):
         self.isPublic = self.manager.isPublic
         self.showRemainder = self.manager.showRemainder
         self.mediaFiles, self.normalFiles = self.get_files(self.post, self.groupInfo)
+        self.authored = self.user_authored()
+        self.authorInfo = createObject('groupserver.UserFromId',
+                                       self.context,
+                                       self.post['author_id'])
+
+    #########################################
+    # Non-standard methods below this point #
+    #########################################
 
     @staticmethod
     def get_files(post, groupInfo):
@@ -54,3 +63,10 @@ class PostViewlet(GroupViewlet):
         assert type(mediaFiles) == list
         assert type(normalFiles) == list
         return (mediaFiles, normalFiles)
+
+    def user_authored(self):
+        retval = False
+        if not(self.loggedInUser.anonymous):
+            retval = self.loggedInUser.id == self.post['author_id']
+        assert type(retval) == bool
+        return retval
