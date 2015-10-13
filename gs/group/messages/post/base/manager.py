@@ -17,6 +17,12 @@ from gs.viewlet.manager import WeightOrderedViewletManager
 
 
 class PostBodyViewletManager(WeightOrderedViewletManager):
+    '''The viewlet manager for the body of a post'''
+    def __init__(self, context, request, view):
+        super(PostBodyViewletManager, self).__init__(context, request, view)
 
+
+class PostActionsViewletManager(WeightOrderedViewletManager):
+    '''The viewlet manager for the actions that can be carried out on a post'''
     def __init__(self, context, request, view):
         super(PostBodyViewletManager, self).__init__(context, request, view)

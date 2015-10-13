@@ -33,21 +33,45 @@
     template="browser/templates/post.pt"
     permission="zope2.Public" />
 
-  <!-- Post metadata viewlet -->
+  <!--Make the post viewlets also provide TAL namespace-data-->
   <interface
-    interface=".interfaces.IPostMetadataContentProvider"
+    interface=".interfaces.IGSPostContentProvider"
     type="zope.contentprovider.interfaces.ITALNamespaceData"/>
-  <class class=".metadata.PostMetadataViewlet">
-    <implements interface=".interfaces.IPostMetadataContentProvider"/>
+  <class class=".viewlet.PostViewlet">
+    <implements interface=".interfaces.IGSPostContentProvider"/>
   </class>
+
+  <!-- Post metadata viewlet -->
   <browser:viewlet
     name="gs-group-messages-post-base-metadata"
     manager=".interfaces.IPost"
-    class=".metadata.PostMetadataViewlet"
+    class=".viewlet.PostViewlet"
     template="browser/templates/metadata.pt"
     permission="zope2.View"
     weight="10"
     title="Metadata" />
+
+  <!--Actions viewlet manager-->
+  <class class=".manager.PostActionsViewletManager">
+    <implements interface=".interfaces.IGSPostContentProvider"/>
+  </class>
+  <browser:viewletManager
+    name="groupserver.PostActions"
+    for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder"
+    provides=".interfaces.IActions"
+    class=".manager.PostActionsViewletManager"
+    template="browser/templates/simplemanager.pt"
+    permission="zope2.Public" />
+
+  <!--The Share button, which is the only default action-->
+  <browser:viewlet
+    name="gs-group-messages-post-share"
+    manager=".interfaces.IActions"
+    class=".viewlet.PostViewlet"
+    template="browser/templates/share.pt"
+    permission="zope2.View"
+    weight="10"
+    title="Share" />
 
   <!--Post body viewlet manager (which is also a content provider)-->
   <browser:viewlet
@@ -58,14 +82,14 @@
     permission="zope2.View"
     weight="20"
     title="Body" />
-  <class class=".body.PostBodyViewletManager">
+  <class class=".manager.PostBodyViewletManager">
     <implements interface=".interfaces.IGSPostContentProvider"/>
   </class>
   <browser:viewletManager
     name="groupserver.PostBody"
     for="Products.XWFMailingListManager.interfaces.IGSMessagesFolder"
     provides=".interfaces.IBody"
-    class=".body.PostBodyViewletManager"
+    class=".manager.PostBodyViewletManager"
     template="browser/templates/simplemanager.pt"
     permission="zope2.Public" />
 

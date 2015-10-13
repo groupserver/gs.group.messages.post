@@ -65,10 +65,6 @@ class IGSPostContentProvider(Interface):
         default=False)
 
 
-class IPostMetadataContentProvider(IGSPostContentProvider):
-    '''The content provider for the post metadata'''
-
-
 class IPost(IViewletManager):
     '''The viewlet manager for the post.
 

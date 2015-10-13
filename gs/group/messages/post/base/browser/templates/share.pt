@@ -1,11 +1,10 @@
-<a
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:tal="http://xml.zope.org/namespaces/tal"
-  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  i18n:domain="gs.group.messages.post"
-  class="gs-content-js-share btn btn-small" role="button"
-  aria-haspopup="true" data-icon="&#xe001;"
-  tal:attributes="href string:${view/siteInfo/url}/r/post/${view/post/post_id};
-  title string:${view/post/subject};
-  public python:view.isPublic and 1 or 0"
-  i18n:translate="share-button">Share</a>
+<a xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:tal="http://xml.zope.org/namespaces/tal"
+   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+   i18n:domain="gs.group.messages.post"
+   class="gs-content-js-share btn btn-small" role="button"
+   aria-haspopup="true" data-icon="&#xe001;"
+   tal:attributes="href string:${view/siteInfo/url}/r/post/${view/post/post_id};
+                   title string:${view/post/subject};
+                   public python:view.isPublic and 1 or 0"
+   i18n:translate="share-button">Share</a>
