@@ -14,6 +14,7 @@
 ############################################################################
 from __future__ import absolute_import, division, unicode_literals, print_function
 from gs.group.base import GroupViewlet
+from gs.group.messages.base import get_icon
 
 
 class PostViewlet(GroupViewlet):
@@ -28,3 +29,28 @@ class PostViewlet(GroupViewlet):
         self.showPhoto = self.manager.showPhoto
         self.isPublic = self.manager.isPublic
         self.showRemainder = self.manager.showRemainder
+        self.mediaFiles, self.normalFiles = self.get_files(self.post, self.groupInfo)
+
+    @staticmethod
+    def get_files(post, groupInfo):
+        mediaFiles = []
+        normalFiles = []
+        for fm in post['files_metadata']:
+            fm['icon'] = get_icon(fm['mime_type'])
+            size = '{0:.1f}kb'.format(fm['file_size'] / 1024.0)  # Better version somewhere?
+            fm['size'] = size
+            # TODO: Extend to audio <https://redmine.iopen.net/issues/416>
+            # TODO: Extend to video <https://redmine.iopen.net/issues/333>
+            if fm['mime_type'][:5] == 'image':
+                url = '{0}/messages/image/{1}'
+                fm['url'] = url.format(groupInfo.relativeURL, fm['file_id'])
+                s = '{0}/files/f/{1}/{2}'
+                fm['src'] = s.format(groupInfo.relativeURL, fm['file_id'], fm['file_name'])
+                mediaFiles.append(fm)
+            else:
+                url = '{0}/files/f/{1}/{2}'
+                fm['url'] = url.format(groupInfo.relativeURL, fm['file_id'], fm['file_name'])
+                normalFiles.append(fm)
+        assert type(mediaFiles) == list
+        assert type(normalFiles) == list
+        return (mediaFiles, normalFiles)
