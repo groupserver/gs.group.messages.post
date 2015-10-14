@@ -25,4 +25,4 @@ class PostBodyViewletManager(WeightOrderedViewletManager):
 class PostActionsViewletManager(WeightOrderedViewletManager):
     '''The viewlet manager for the actions that can be carried out on a post'''
     def __init__(self, context, request, view):
-        super(PostBodyViewletManager, self).__init__(context, request, view)
+        super(PostActionsViewletManager, self).__init__(context, request, view)

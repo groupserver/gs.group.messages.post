@@ -1,0 +1,7 @@
+<div xmlns:tal="http://xml.zope.org/namespaces/tal"
+     tal:define="post view/post; position view/position;
+                 topicName view/topicName; showPhoto view/showPhoto;
+                 isPublic view/isPublic; showRemainder view/showRemainder"
+     tal:content="structure provider:groupserver.PostActions">
+  These are the post actions.
+</div>

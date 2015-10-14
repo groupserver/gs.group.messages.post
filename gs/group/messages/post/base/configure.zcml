@@ -52,6 +52,14 @@
     title="Metadata" />
 
   <!--Actions viewlet manager-->
+  <browser:viewlet
+    name="gs-group-messages-post-base-actions"
+    manager=".interfaces.IPost"
+    class=".viewlet.PostViewlet"
+    template="browser/templates/actions.pt"
+    permission="zope2.View"
+    weight="20"
+    title="Body" />
   <class class=".manager.PostActionsViewletManager">
     <implements interface=".interfaces.IGSPostContentProvider"/>
   </class>
@@ -80,7 +88,7 @@
     class=".viewlet.PostViewlet"
     template="browser/templates/body.pt"
     permission="zope2.View"
-    weight="20"
+    weight="30"
     title="Body" />
   <class class=".manager.PostBodyViewletManager">
     <implements interface=".interfaces.IGSPostContentProvider"/>
