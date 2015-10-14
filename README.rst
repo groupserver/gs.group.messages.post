@@ -19,8 +19,10 @@ The core code for displaying a post
 Introduction
 ============
 
-This is the code for displaying posts that have been made to a group. It
-provides the ``groupserver.Post``content provider used to render a post.
+This product displays the posts that have been made to a
+GroupServer group. It provides the ``groupserver.Post`` content
+provider used to render a post, and various viewlet managers that
+provide space for sub-components.
 
 Resources
 =========
@@ -30,7 +32,7 @@ Resources
 - Code repository:
   https://github.com/groupserver/gs.group.messages.post.base/
 - Translations:
-  https://www.transifex.com/projects/p/gs-group-messages-post/
+  https://www.transifex.com/groupserver/gs-group-messages-post-base/
 - Questions and comments to
   http://groupserver.org/groups/development
 - Report bugs at https://redmine.iopen.net/projects/groupserver
