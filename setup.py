@@ -74,6 +74,7 @@ setup(
         'zope.tales',
         'zope.viewlet',
         'gs.group.base',
+        'gs.group.messages.base',
         'gs.help',
         'gs.viewlet',
         'Products.XWFMailingListManager',
