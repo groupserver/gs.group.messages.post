@@ -6,6 +6,6 @@
                   id string:post-${view/post/post_id};
                   aria-labelledby string:post-${view/post/post_id}-title">
   <tal:block repeat="viewlet options/viewlets">
-    <tal:block content="structure viewlet/render">Script Content</tal:block>
+    <tal:block content="structure viewlet/render">Post content</tal:block>
   </tal:block>
 </article><!--h-entry-->

@@ -46,7 +46,7 @@ class PostViewlet(GroupViewlet):
         normalFiles = []
         for fm in post['files_metadata']:
             fm['icon'] = get_icon(fm['mime_type'])
-            size = '{0:.1f}kb'.format(fm['file_size'] / 1024.0)  # Better version somewhere?
+            size = '{0:.1f}kb'.format(fm['file_size'] / 1024.0)  # FIXME: Better version somewhere?
             fm['size'] = size
             # TODO: Extend to audio <https://redmine.iopen.net/issues/416>
             # TODO: Extend to video <https://redmine.iopen.net/issues/333>

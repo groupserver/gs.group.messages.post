@@ -1,7 +1,7 @@
 <tal:block
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  i18n:domain="gs.group.messages.post">
+  i18n:domain="gs.group.messages.post.base">
   <aside class="email-metadata" role="complementary"
        tal:define="m python:modules['Products.XWFCore.XWFUtils'];
                    munge_date python:m.munge_date;
