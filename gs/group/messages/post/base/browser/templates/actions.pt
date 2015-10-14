@@ -2,6 +2,8 @@
      tal:define="post view/post; position view/position;
                  topicName view/topicName; showPhoto view/showPhoto;
                  isPublic view/isPublic; showRemainder view/showRemainder"
-     tal:content="structure provider:groupserver.PostActions">
+     tal:content="structure provider:groupserver.PostActions"
+     class="gs-group-messages-post-buttons btn-toolbar"
+     aria-label="Post actions" role="toolbar">
   These are the post actions.
-</div>
+</div><!--gs-group-messages-post-buttons-->
