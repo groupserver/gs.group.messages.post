@@ -51,7 +51,7 @@
     weight="10"
     title="Metadata" />
 
-  <!--Actions viewlet manager-->
+  <!--Actions viewlet (which contains a viewlet manager)-->
   <browser:viewlet
     name="gs-group-messages-post-base-actions"
     manager=".interfaces.IPost"
@@ -81,7 +81,7 @@
     weight="10"
     title="Share" />
 
-  <!--Post body viewlet manager (which is also a content provider)-->
+  <!--Post body viewlet (which contains a viewlet manager)-->
   <browser:viewlet
     name="gs-group-messages-post-base-body"
     manager=".interfaces.IPost"
