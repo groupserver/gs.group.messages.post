@@ -2,6 +2,9 @@
   xmlns:tal="http://xml.zope.org/namespaces/tal"
   xmlns:i18n="http://xml.zope.org/namespaces/i18n"
   i18n:domain="gs.group.messages.post.base">
+  <div tal:condition="view/showPhoto" role="complementary"
+       tal:define="user view/authorInfo/user; size string:40;"
+       tal:replace="structure provider:groupserver.SquareUserImage"/>
   <aside class="email-metadata" role="complementary"
        tal:define="m python:modules['Products.XWFCore.XWFUtils'];
                    munge_date python:m.munge_date;
@@ -29,7 +32,4 @@
               tal:content="date">Today, Tomorrow, Timaru</time></em>
     </span><!--posted-->
   </aside><!--email-metadata-->
-  <div tal:condition="view/showPhoto" role="complementary"
-       tal:define="user view/authorInfo/user; size string:50;"
-       tal:replace="structure provider:groupserver.SquareUserImage"/>
 </tal:block>
