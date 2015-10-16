@@ -19,6 +19,9 @@ from gs.group.messages.base import get_icon
 
 
 class PostViewlet(GroupViewlet):
+    IMAGE_URI = '{0}/messages/image/{1}'
+    SOURCE_URI = '{0}/files/f/{1}/{2}'
+
     def __init__(self, context, request, view, manager):
         super(PostViewlet, self).__init__(context, request, view, manager)
 
@@ -40,8 +43,8 @@ class PostViewlet(GroupViewlet):
     # Non-standard methods below this point #
     #########################################
 
-    @staticmethod
-    def get_files(post, groupInfo):
+    @classmethod
+    def get_files(cls, post, groupInfo):
         mediaFiles = []
         normalFiles = []
         for fm in post['files_metadata']:
@@ -51,14 +54,13 @@ class PostViewlet(GroupViewlet):
             # TODO: Extend to audio <https://redmine.iopen.net/issues/416>
             # TODO: Extend to video <https://redmine.iopen.net/issues/333>
             if fm['mime_type'][:5] == 'image':
-                url = '{0}/messages/image/{1}'
-                fm['url'] = url.format(groupInfo.relativeURL, fm['file_id'])
-                s = '{0}/files/f/{1}/{2}'
-                fm['src'] = s.format(groupInfo.relativeURL, fm['file_id'], fm['file_name'])
+                fm['url'] = cls.IMAGE_URI.format(groupInfo.relativeURL, fm['file_id'])
+                fm['src'] = cls.SOURCE_URI.format(groupInfo.relativeURL, fm['file_id'],
+                                                  fm['file_name'])
                 mediaFiles.append(fm)
             else:
-                url = '{0}/files/f/{1}/{2}'
-                fm['url'] = url.format(groupInfo.relativeURL, fm['file_id'], fm['file_name'])
+                fm['url'] = cls.SOURCE_URI.format(groupInfo.relativeURL, fm['file_id'],
+                                                  fm['file_name'])
                 normalFiles.append(fm)
         assert type(mediaFiles) == list
         assert type(normalFiles) == list

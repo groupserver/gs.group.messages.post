@@ -53,7 +53,7 @@ class PostViewletManager(WeightOrderedViewletManager):
     @Lazy
     def cssClass(self):
         if not hasattr(self, 'position'):
-            raise ValueError('The self.position is unset')
+            raise AttributeError('The self.position is unset')
         retval = 'even' if ((self.position % 2) == 0) else 'odd'
         retval += ' post-hidden' if self.post['hidden'] else ' post-visible'
         return retval
