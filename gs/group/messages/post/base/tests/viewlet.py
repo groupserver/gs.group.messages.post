@@ -49,6 +49,7 @@ class TestPostViewlet(TestCase):
         r = self.viewlet.get_files(post, self.groupInfo)
 
         self.assertEqual(1, len(r[0]))
+        self.assertEqual(1, len(r.media))
         i = r[0][0]
         self.assertIn('icon', i)
         self.assertIn('src', i)
@@ -64,6 +65,7 @@ class TestPostViewlet(TestCase):
         r = self.viewlet.get_files(post, self.groupInfo)
 
         self.assertEqual(2, len(r[0]))
+        self.assertEqual(2, len(r.media))
         self.assertEqual([], r[1])
 
     def test_get_files_non_img(self):
@@ -74,6 +76,7 @@ class TestPostViewlet(TestCase):
 
         self.assertEqual([], r[0])
         self.assertEqual(1, len(r[1]))
+        self.assertEqual(1, len(r.normal))
         i = r[1][0]
         self.assertIn('icon', i)
         self.assertNotIn('src', i)

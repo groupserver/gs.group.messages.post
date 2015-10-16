@@ -13,10 +13,14 @@
 #
 ############################################################################
 from __future__ import absolute_import, division, unicode_literals, print_function
+from collections import namedtuple
 from math import pow, floor, log
 from zope.component import createObject
 from gs.group.base import GroupViewlet
 from gs.group.messages.base import get_icon
+
+
+FilesRetval = namedtuple('FilesRetval', ['media', 'normal'])
 
 
 class PostViewlet(GroupViewlet):
@@ -77,7 +81,8 @@ class PostViewlet(GroupViewlet):
                 normalFiles.append(fm)
         assert type(mediaFiles) == list
         assert type(normalFiles) == list
-        return (mediaFiles, normalFiles)
+        retval = FilesRetval(mediaFiles, normalFiles)
+        return retval
 
     def user_authored(self):
         retval = False
