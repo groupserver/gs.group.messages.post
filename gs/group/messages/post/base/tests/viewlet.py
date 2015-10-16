@@ -49,4 +49,65 @@ class TestPostViewlet(TestCase):
         r = self.viewlet.get_files(post, self.groupInfo)
 
         self.assertEqual(1, len(r[0]))
+        i = r[0][0]
+        self.assertIn('icon', i)
+        self.assertIn('src', i)
+        self.assertIn('url', i)
+        self.assertIn('size', i)
         self.assertEqual([], r[1])
+
+    def test_get_files_images(self):
+        'Test when there are images'
+        i1 = self.create_file('image/jpeg', 1234, 'anId0', 'photo-0.jpg')
+        i2 = self.create_file('image/png', 4321, 'anId1', 'photo-1.png')
+        post = {'files_metadata': [i1, i2]}
+        r = self.viewlet.get_files(post, self.groupInfo)
+
+        self.assertEqual(2, len(r[0]))
+        self.assertEqual([], r[1])
+
+    def test_get_files_non_img(self):
+        'Test when there is a non-image file'
+        post = {'files_metadata': [self.create_file('application/octet-stream', 1234, 'anId',
+                                                    'a.file')]}
+        r = self.viewlet.get_files(post, self.groupInfo)
+
+        self.assertEqual([], r[0])
+        self.assertEqual(1, len(r[1]))
+        i = r[1][0]
+        self.assertIn('icon', i)
+        self.assertNotIn('src', i)
+        self.assertIn('url', i)
+        self.assertIn('size', i)
+
+    def test_get_files_both(self):
+        'Test when there are both types of file'
+        img = self.create_file('image/jpeg', 1234, 'anId', 'photo.jpg')
+        other = self.create_file('application/octet-stream', 1234, 'anId', 'a.file')
+        post = {'files_metadata': [img, other]}
+        r = self.viewlet.get_files(post, self.groupInfo)
+
+        self.assertEqual(1, len(r[0]))
+        self.assertEqual(1, len(r[1]))
+        self.assertNotEqual(r[0][0], r[1][0])
+        self.assertEqual('image', r[0][0]['mime_type'][:5])
+
+    def test_file_size_empty(self):
+        r = self.viewlet.file_size_format(0)
+        self.assertEqual('empty', r)
+
+    def test_file_size_bytes(self):
+        r = self.viewlet.file_size_format(10)
+        self.assertEqual('10 bytes', r)
+
+    def test_file_size_kb(self):
+        r = self.viewlet.file_size_format(2047)
+        self.assertEqual('2.00kb', r)
+
+    def test_file_size_mb(self):
+        r = self.viewlet.file_size_format(2047*1000)
+        self.assertEqual('1.95mb', r)
+
+    def test_file_size_gb(self):
+        r = self.viewlet.file_size_format(2047*1000*1000)
+        self.assertEqual('1.91gb', r)
