@@ -1,6 +1,12 @@
 Changelog
 =========
 
+4.0.1 (2015-10-27)
+------------------
+
+* Removing a division that was reducing the reported size of
+  files by an order of magnitude.
+
 4.0.0 (2015-10-19)
 ------------------
 
