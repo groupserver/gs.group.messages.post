@@ -67,7 +67,7 @@ class PostViewlet(GroupViewlet):
         normalFiles = []
         for fm in post['files_metadata']:
             fm['icon'] = get_icon(fm['mime_type'])
-            fm['size'] = self.file_size_format(fm['file_size'] / 1024.0)
+            fm['size'] = self.file_size_format(fm['file_size'])
             # TODO: Extend to audio <https://redmine.iopen.net/issues/416>
             # TODO: Extend to video <https://redmine.iopen.net/issues/333>
             if fm['mime_type'][:5] == 'image':
