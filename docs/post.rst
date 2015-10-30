@@ -96,12 +96,5 @@ default (``False``). Finally, the content provider is called
 using ``structure provider:groupserver.Post``, replacing the
 content of the ``<tal:block>`` element (line 11).
 
-Caching
--------
-
-Because speed is so important, the post is *partly* cached: the
-page-template is parsed and loaded (*cooked*), and stored in a
-per-thread cache.
-
 .. _content provider:
    https://pypi.python.org/pypi/zope.contentprovider
