@@ -1,6 +1,15 @@
 Changelog
 =========
 
+4.0.2 (2015-10-30)
+------------------
+
+* Moving the ``file_size_format`` function to
+  `gs.group.messages.base`_
+
+.. _gs.group.messages.base:
+   https://github.com/groupserver/gs.group.messages.base
+
 4.0.1 (2015-10-27)
 ------------------
 
