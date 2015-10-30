@@ -14,10 +14,9 @@
 ############################################################################
 from __future__ import absolute_import, division, unicode_literals, print_function
 from collections import namedtuple
-from math import pow, floor, log
 from zope.component import createObject
 from gs.group.base import GroupViewlet
-from gs.group.messages.base import get_icon
+from gs.group.messages.base import (get_icon, file_size_format, )
 
 
 FilesRetval = namedtuple('FilesRetval', ['media', 'normal'])
@@ -47,27 +46,12 @@ class PostViewlet(GroupViewlet):
     #########################################
     # Non-standard methods below this point #
     #########################################
-    @staticmethod
-    def file_size_format(bytes):
-        """Returns a humanized string for a given amount of bytes"""
-        # http://python.todaysummary.com/q_python_11123.html
-        bytes = int(bytes)
-        if bytes is 0:
-            retval = 'empty'
-        else:
-            l = floor(log(bytes, 1024))
-            size = bytes / pow(1024, l)
-            unit = [' bytes', 'kb', 'mb', 'gb', 'tb', 'pb', 'eb', 'zb', 'yb'][int(l)]
-            sf = 2 if l > 0 else 0
-            retval = '{size:.{sf}f}{unit}'.format(size=size, sf=sf, unit=unit)
-        return retval
-
     def get_files(self, post, groupInfo):
         mediaFiles = []
         normalFiles = []
         for fm in post['files_metadata']:
             fm['icon'] = get_icon(fm['mime_type'])
-            fm['size'] = self.file_size_format(fm['file_size'])
+            fm['size'] = file_size_format(fm['file_size'])
             # TODO: Extend to audio <https://redmine.iopen.net/issues/416>
             # TODO: Extend to video <https://redmine.iopen.net/issues/333>
             if fm['mime_type'][:5] == 'image':

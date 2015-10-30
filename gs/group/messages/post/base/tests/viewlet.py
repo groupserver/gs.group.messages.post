@@ -94,23 +94,3 @@ class TestPostViewlet(TestCase):
         self.assertEqual(1, len(r[1]))
         self.assertNotEqual(r[0][0], r[1][0])
         self.assertEqual('image', r[0][0]['mime_type'][:5])
-
-    def test_file_size_empty(self):
-        r = self.viewlet.file_size_format(0)
-        self.assertEqual('empty', r)
-
-    def test_file_size_bytes(self):
-        r = self.viewlet.file_size_format(10)
-        self.assertEqual('10 bytes', r)
-
-    def test_file_size_kb(self):
-        r = self.viewlet.file_size_format(2047)
-        self.assertEqual('2.00kb', r)
-
-    def test_file_size_mb(self):
-        r = self.viewlet.file_size_format(2047*1000)
-        self.assertEqual('1.95mb', r)
-
-    def test_file_size_gb(self):
-        r = self.viewlet.file_size_format(2047*1000*1000)
-        self.assertEqual('1.91gb', r)

@@ -14,7 +14,7 @@
 ############################################################################
 from __future__ import absolute_import, unicode_literals
 from unittest import TestSuite, main as unittest_main
-from gs.group.messages.post.base.tests.viewlet  import (TestPostViewlet)
+from gs.group.messages.post.base.tests.viewlet import (TestPostViewlet)
 testCases = (TestPostViewlet, )
 
 
