@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 // Sharing a post
 //
 // Copyright © 2013, 2014 OnlineGroups.net and Contributors.
@@ -14,7 +14,7 @@
 jQuery.noConflict();
 
 function gs_group_messages_post_share_init() {
-    var isPublic=false, shareWidget=null;
+    var isPublic = false, shareWidget = null;
 
     jQuery('.gs-content-js-share').each(function() {
         // TODO: make isPublic not sux. This is the one topic-specific part.
@@ -24,7 +24,7 @@ function gs_group_messages_post_share_init() {
     });
 }
 
-jQuery(window).load(function () {
+jQuery(window).load(function() {
     gsJsLoader.with_module(
         '/++resource++gs-content-js-sharebox-min-20151112.js',
         gs_group_messages_post_share_init);
