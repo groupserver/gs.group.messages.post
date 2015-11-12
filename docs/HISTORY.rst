@@ -1,6 +1,17 @@
 Changelog
 =========
 
+4.0.3 (2015-11-12)
+------------------
+
+* Following the updates to `gs.content.js.sharebox`_
+* Running `gjslint`_ over the JavaScript resources
+
+.. _gs.content.js.sharebox:
+   https://github.com/groupserver/gs.content.js.sharebox
+.. _gjslint:
+   https://developers.google.com/closure/utilities/docs/linter_howto
+
 4.0.2 (2015-10-30)
 ------------------
 
