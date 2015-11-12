@@ -101,6 +101,16 @@
     template="browser/templates/simplemanager.pt"
     permission="zope2.Public" />
 
+  <!--The Share widget for posts -->
+  <browser:resource
+    name="gs-group-messages-post-share-20151112.js"
+    file="browser/javascript/post-share.js"
+    permission="zope2.Public"/>
+  <browser:resource
+    name="gs-group-messages-post-share-min-20151112.js"
+    file="browser/javascript/post-share-min.js"
+    permission="zope2.Public"/>
+  <!--The old version-->
   <browser:resource
     name="gs-group-messages-post-share-20140327.js"
     file="browser/javascript/post-share.js"
