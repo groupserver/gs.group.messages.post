@@ -44,7 +44,7 @@ Resources
 =========
 
 - Documentation:
-  http://groupserver.readthedocs.org/projects/gsgroupmessagespostbase/
+  http://groupserver.readthedocs.io/projects/gsgroupmessagespostbase/
 - Code repository:
   https://github.com/groupserver/gs.group.messages.post.base/
 - Translations:
